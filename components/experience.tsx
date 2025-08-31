@@ -14,23 +14,23 @@ export function Experience() {
       technologies: ["Docker", "Kubernetes", "ArgoCD", "Jenkins CI/CD", "Gitlab CI/CD"],
     },
     {
-      title: "Frontend Developer",
-      company: "StartupXYZ",
-      location: "Remote",
-      period: "2020 - 2022",
+      title: "AWS Cloud Apprenticeship",
+      company: "Adex International",
+      location: "On-site",
+      period: "2025 - 2025",
       description:
-        "Built responsive web applications from scratch. Collaborated with design team to implement pixel-perfect UI components and optimize user experience.",
-      technologies: ["Vue.js", "JavaScript", "SCSS", "Firebase", "Figma"],
+        "Certification Preparation for AWS Solutions Architect - Associate (SAA-C03)",
+      technologies: ["VPC","Lambda", "S3", "IAM", "Cloud Formation", "SQS", "SNS", "EC2","Route 53", "CloudFront"],
     },
-    {
-      title: "Junior Web Developer",
-      company: "Digital Agency Pro",
-      location: "New York, NY",
-      period: "2019 - 2020",
-      description:
-        "Developed custom WordPress themes and plugins. Maintained client websites and implemented SEO best practices.",
-      technologies: ["WordPress", "PHP", "MySQL", "jQuery", "CSS3"],
-    },
+    // {
+    //   title: "Junior Web Developer",
+    //   company: "Digital Agency Pro",
+    //   location: "New York, NY",
+    //   period: "2019 - 2020",
+    //   description:
+    //     "Developed custom WordPress themes and plugins. Maintained client websites and implemented SEO best practices.",
+    //   technologies: ["WordPress", "PHP", "MySQL", "jQuery", "CSS3"],
+    // },
   ]
 
   return (

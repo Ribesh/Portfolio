@@ -16,13 +16,13 @@ export function Terminal() {
 
   const commands = {
     help: "Available commands: about, skills, projects, experience, contact, clear, whoami",
-    about: "I am a passionate full-stack developer with 5+ years of experience building modern web applications.",
+    about: "I am a passionate DevOps Engineer with 3+ years of Experience.",
     skills: "Frontend: React, TypeScript, Next.js | Backend: Node.js, Python | Database: PostgreSQL, MongoDB",
     projects: "Recent projects: E-Commerce Platform, Task Management App, Weather Dashboard, Social Media App",
     experience:
-      "Senior Full Stack Developer at TechCorp Solutions (2022-Present) | Previously at StartupXYZ and Digital Agency Pro",
-    contact: "Email: john@example.com | LinkedIn: /in/johndeveloper | GitHub: /johndeveloper",
-    whoami: "john_developer@portfolio:~$ You are viewing the portfolio of John Developer",
+      "Senior System Engineer at CAS Total Solutions (2019-Present) | Previously, AWS Cloud Apprenticeship (SAA-C03) at Adex International",
+    contact: "Email: ribeshshr@gmail.com | LinkedIn: https://www.linkedin.com/in/ribesh-shrestha/ | GitHub: https://github.com/Ribesh",
+    whoami: "ribesh@portfolio:~$ You are viewing the portfolio of Ribesh Shrestha",
     clear: "CLEAR_TERMINAL",
   }
 
@@ -31,7 +31,7 @@ export function Terminal() {
     setHistory([
       {
         command: "",
-        output: 'Welcome to John\'s Portfolio Terminal! Type "help" to see available commands.',
+        output: 'Welcome to Ribesh\'s Portfolio Terminal! Type "help" to see available commands.',
         timestamp: new Date().toLocaleTimeString(),
       },
     ])
