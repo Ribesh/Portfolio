@@ -5,18 +5,18 @@ export function About() {
   const highlights = [
     {
       icon: Code,
-      title: "Clean Code",
-      description: "Writing maintainable, scalable, and efficient code that stands the test of time.",
+      title: "Automation & CI/CD",
+      description: "Designing automated pipelines and workflows to streamline deployments and reduce errors.",
     },
     {
       icon: Palette,
-      title: "Design Focus",
-      description: "Creating beautiful, intuitive interfaces that provide exceptional user experiences.",
+      title: "Reliable Infrastructure",
+      description: "Building scalable, maintainable, and fault-tolerant systems that stand the test of time.",
     },
     {
       icon: Zap,
-      title: "Performance",
-      description: "Optimizing applications for speed, accessibility, and cross-platform compatibility.",
+      title: "Performance & Scalability",
+      description: "Optimizing systems for high availability, efficiency, and seamless cross-environment operation.",
     },
   ]
 

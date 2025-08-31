@@ -6,11 +6,10 @@ export function Hero() {
     <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center">
         <div className="mb-8">
-          <h1 className="text-4xl sm:text-6xl font-bold text-primary mb-4">John Developer</h1>
-          <p className="text-xl sm:text-2xl text-muted-foreground mb-6">Full Stack Developer & UI/UX Enthusiast</p>
+          <h1 className="text-4xl sm:text-6xl font-bold text-primary mb-4">Ribesh Shrestha</h1>
+          <p className="text-xl sm:text-2xl text-muted-foreground mb-6">DevOps & Cloud Enthusiast</p>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Passionate about creating exceptional digital experiences through clean code, innovative design, and
-            cutting-edge technologies.
+            Passionate about delivering reliable, scalable, and efficient systems through automation, infrastructure-as-code, and best-in-class DevOps practices
           </p>
         </div>
 

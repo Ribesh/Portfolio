@@ -80,7 +80,7 @@ jobs:
         with:
           path: ./out
 
-  # # Deployment job
+  # # Deployment job main branch
   # deploy:
   #   environment:
   #     name: github-pages
@@ -93,7 +93,7 @@ jobs:
   #       uses: actions/deploy-pages@v4
 
 
-  # Deployment job
+  # Deployment job DEV Branch
   deploy:
     environment:
       name: github-pages-dev
