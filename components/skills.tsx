@@ -5,43 +5,43 @@ import { Code, Database, Palette, Server } from "lucide-react"
 export function Skills() {
   const skillCategories = [
     {
-      title: "Frontend",
+      title: "CI/CD",
       icon: Code,
       skills: [
-        { name: "React/Next.js", level: 95 },
-        { name: "TypeScript", level: 90 },
-        { name: "Tailwind CSS", level: 85 },
-        { name: "Vue.js", level: 80 },
+        { name: "Jenkins", level: 80 },
+        { name: "Gitlab", level: 95 },
+        { name: "Github Action", level: 60 },
+        // { name: "Vue.js", level: 80 },
       ],
     },
     {
-      title: "Backend",
+      title: "Containerization & Orchestration",
       icon: Server,
       skills: [
-        { name: "Node.js", level: 90 },
-        { name: "Python", level: 85 },
-        { name: "Express.js", level: 88 },
-        { name: "GraphQL", level: 75 },
+        { name: "Docker", level: 90 },
+        { name: "Kubernetes", level: 85 },
+        { name: "Helm", level: 88 },
+        // { name: "GraphQL", level: 75 },
       ],
     },
     {
-      title: "Database",
+      title: "Infrastructure as Code (IaC) & Automation",
       icon: Database,
       skills: [
-        { name: "PostgreSQL", level: 85 },
-        { name: "MongoDB", level: 80 },
-        { name: "Redis", level: 75 },
-        { name: "Prisma", level: 90 },
+        { name: "Terraform", level: 75 },
+        { name: "Ansible", level: 80 },
+        // { name: "Redis", level: 75 },
+        // { name: "Prisma", level: 90 },
       ],
     },
     {
-      title: "Design & Tools",
+      title: "Security & Monitoring",
       icon: Palette,
       skills: [
-        { name: "Figma", level: 85 },
-        { name: "Git/GitHub", level: 95 },
-        { name: "Docker", level: 80 },
-        { name: "AWS", level: 75 },
+        { name: "Trivy", level: 70 },
+        { name: "Prometheus & Grafana", level: 75 },
+        { name: "Cloud Platforms (AWS)", level: 80 },
+        // { name: "AWS", level: 75 },
       ],
     },
   ]
