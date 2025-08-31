@@ -85,7 +85,8 @@ export function Terminal() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <TerminalIcon className="h-4 w-4" />
-                <CardTitle className="text-sm text-gray-300">john@portfolio:~</CardTitle>
+                {/* <CardTitle className="text-sm text-gray-300">john@portfolio:~</CardTitle> */}
+                <CardTitle className="text-sm text-gray-300">ribesh@portfolio:~</CardTitle>
               </div>
               <div className="flex items-center gap-2">
                 <Button
@@ -107,7 +108,8 @@ export function Terminal() {
                   <div key={index}>
                     {entry.command && (
                       <div className="flex items-center gap-2">
-                        <span className="text-blue-400">john@portfolio:~$</span>
+                        {/* <span className="text-blue-400">john@portfolio:~$</span> */}
+                        <span className="text-blue-400">ribesh@portfolio:~$</span>
                         <span className="text-white">{entry.command}</span>
                       </div>
                     )}
@@ -117,7 +119,8 @@ export function Terminal() {
               </div>
 
               <form onSubmit={handleSubmit} className="flex items-center gap-2">
-                <span className="text-blue-400">john@portfolio:~$</span>
+                {/* <span className="text-blue-400">john@portfolio:~$</span> */}
+                <span className="text-blue-400">ribesh@portfolio:~$</span>
                 <input
                   ref={inputRef}
                   type="text"
