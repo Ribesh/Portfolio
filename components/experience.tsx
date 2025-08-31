@@ -10,9 +10,8 @@ export function Experience() {
       location: "New Plaza, Kathmandu",
       period: "2019 - Present",
       description:
-        " Implemented a centralized code repository using GitLab to standardize code management and improve collaboration across development teams. ",
-        "Spearheaded the first DevOps initiatives in the company, driving automation and modern deployment practices",
-      technologies: ["React", "Node.js", "TypeScript", "AWS", "PostgreSQL"],
+        " Implemented a centralized code repository using GitLab to standardize code management and improve collaboration across development teams.",
+      technologies: ["Docker", "Kubernetes", "ArgoCD", "Jenkins CI/CD", "Gitlab CI/CD"],
     },
     {
       title: "Frontend Developer",
