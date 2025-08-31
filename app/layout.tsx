@@ -16,8 +16,8 @@ const openSans = Open_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Developer Portfolio",
-  description: "Modern developer portfolio with interactive terminal",
+  title: "Ribesh's Portfolio",
+  description: "Modern DevOps portfolio with interactive terminal",
   generator: "v0.app",
 }
 
