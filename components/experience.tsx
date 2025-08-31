@@ -5,12 +5,13 @@ import { Calendar, MapPin } from "lucide-react"
 export function Experience() {
   const experiences = [
     {
-      title: "Senior Full Stack Developer",
-      company: "TechCorp Solutions",
-      location: "San Francisco, CA",
-      period: "2022 - Present",
+      title: "Senior System Engineer",
+      company: "CAS Total Solutions",
+      location: "New Plaza, Kathmandu",
+      period: "2019 - Present",
       description:
-        "Lead development of enterprise web applications serving 100k+ users. Architected microservices infrastructure and mentored junior developers.",
+        " Implemented a centralized code repository using GitLab to standardize code management and improve collaboration across development teams. ",
+        "Spearheaded the first DevOps initiatives in the company, driving automation and modern deployment practices",
       technologies: ["React", "Node.js", "TypeScript", "AWS", "PostgreSQL"],
     },
     {

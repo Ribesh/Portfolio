@@ -26,9 +26,9 @@ export function About() {
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">About Me</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I'm a passionate full-stack developer with over 5 years of experience building web applications that solve
-            real-world problems. I love working with modern technologies and am always eager to learn new tools and
-            frameworks.
+            I'm a passionate DevOps & Cloud Engineer with over 3 years of experience. I'm passionate about 
+            solving complex problems, automating infrastracture, and improving system reliability to accelerate
+            delivery in on-prem or cloud-native environments.
           </p>
         </div>
 
@@ -36,18 +36,20 @@ export function About() {
           <div>
             <h3 className="text-2xl font-bold text-primary mb-6">My Journey</h3>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Started as a curious computer science student, I quickly fell in love with the art of programming. What
-              began as simple HTML pages has evolved into building complex, scalable applications used by thousands of
-              users.
+              Started as a curious Computer Engineering student, I quickly fell in love with solving problems 
+              through technology. What began with writing simple scripts has grown into building reliable 
+              CI/CD pipelines, automating deployments, and managing scalable cloud-native systems that 
+              empower teams and serve thousands of users.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Today, I specialize in React, Node.js, and modern web technologies, always staying current with industry
-              trends and best practices.
+              Today, I specialize in DevOps practices, cloud infrastructure, CI/CD pipelines, containerization 
+              with Docker and Kubernetes, and automation tools, always staying current with industry trends 
+              and best practices.
             </p>
           </div>
           <div className="relative">
             <img
-              src="/professional-developer-headshot.png"
+              src="public/professional-developer-headshot.png"
               alt="Developer portrait"
               className="rounded-lg shadow-lg w-full max-w-md mx-auto"
             />
