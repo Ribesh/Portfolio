@@ -16,11 +16,11 @@ export function Projects() {
       // githubUrl: "#",
     },
     {
-      title: "Task Management App",
+      title: "Gitlab: Optimizing CI/CD with Automated Docker Image Builds",
       description:
-        "Collaborative project management tool with real-time updates, team collaboration, and progress tracking.",
-      image: "/task-management-dashboard.png",
-      technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Material-UI"],
+        "Optimized CI/CD pipeline by automating Docker image builds from code updates and resolving frequent build errors.",
+      image: "/Pipeline.png",
+      technologies: ["Docker", "CI/CD", "Git", "Gitlab CI"],
       // liveUrl: "https://medium.com/@ribeshshr/gitops-in-action-ci-cd-workflow-using-gitlab-helm-and-argocd-1b929870ba86",
       // githubUrl: "#",
     },
