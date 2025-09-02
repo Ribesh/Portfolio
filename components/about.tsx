@@ -49,7 +49,7 @@ export function About() {
           </div>
           <div className="relative">
             <img
-              src="public/professional-developer-headshot.png"
+              src="Ribesh.jpg"
               alt="Developer portrait"
               className="rounded-lg shadow-lg w-full max-w-md mx-auto"
             />
