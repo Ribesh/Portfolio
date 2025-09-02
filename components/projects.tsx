@@ -6,13 +6,14 @@ import { ExternalLink, Github } from "lucide-react"
 export function Projects() {
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "GitOps in Action: CI/CD Workflow using GitLab, Helm, and ArgoCD",
       description:
-        "Full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.",
-      image: "/modern-ecommerce-interface.png",
-      technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind"],
-      liveUrl: "#",
-      githubUrl: "#",
+        "CI/CD pipeline with GitLab, Docker, Helm, and ArgoCD for automated testing, containerization, and Kubernetes deployment with Nginx ingress and MetalLB.",
+      image: "/GitOps.png",
+      technologies: ["GitLab CI/CD", "Docker", "Helm", "ArgoCD", "Kubernetes", "Nginx", "MetalLB"],
+      liveUrl: "https://medium.com/@ribeshshr/gitops-in-action-ci-cd-workflow-using-gitlab-helm-and-argocd-1b929870ba86",
+      // ArticleLink: "#",
+      // githubUrl: "#",
     },
     {
       title: "Task Management App",
@@ -20,8 +21,8 @@ export function Projects() {
         "Collaborative project management tool with real-time updates, team collaboration, and progress tracking.",
       image: "/task-management-dashboard.png",
       technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Material-UI"],
-      liveUrl: "#",
-      githubUrl: "#",
+      // liveUrl: "https://medium.com/@ribeshshr/gitops-in-action-ci-cd-workflow-using-gitlab-helm-and-argocd-1b929870ba86",
+      // githubUrl: "#",
     },
     {
       title: "Weather Analytics Dashboard",
