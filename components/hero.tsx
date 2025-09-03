@@ -19,12 +19,12 @@ export function Hero() {
             Get In Touch
           </Button>
         
-        <a href="/resume.pdf" download>
-          <Button variant="outline" size="lg">
-            <Download className="mr-2 h-4 w-4" />
-            Download Resume
-          </Button>
-        </a>
+          <a href="/resume.pdf" download>
+            <Button variant="outline" size="lg">
+              <Download className="mr-2 h-4 w-4" />
+              Download Resume
+            </Button>
+          </a>
    
           {/* <Button variant="outline" size="lg">
             <Download className="mr-2 h-4 w-4" />
