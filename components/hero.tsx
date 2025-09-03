@@ -18,11 +18,19 @@ export function Hero() {
             <Mail className="mr-2 h-4 w-4" />
             Get In Touch
           </Button>
+        
+        <a href="/resume.pdf" download>
           <Button variant="outline" size="lg">
             <Download className="mr-2 h-4 w-4" />
             Download Resume
           </Button>
-        </div>
+        </a>
+   
+          {/* <Button variant="outline" size="lg">
+            <Download className="mr-2 h-4 w-4" />
+            Download Resume
+          </Button>
+        </div> */}
 
         <div className="flex justify-center space-x-6">
           <Button variant="ghost" size="sm">
