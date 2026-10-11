@@ -175,6 +175,17 @@
       transparent 70%
     );
   }
+
+  /* Minimal ambient backdrop — two soft, fixed blobs behind every page. */
+  .bg-ambient {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    pointer-events: none;
+    background:
+      radial-gradient(40% 35% at 85% 0%, color-mix(in oklch, var(--accent) 10%, transparent), transparent 70%),
+      radial-gradient(35% 30% at 0% 100%, color-mix(in oklch, var(--amber) 8%, transparent), transparent 70%);
+  }
 }
 
 @keyframes caret-blink {

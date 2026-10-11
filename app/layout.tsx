@@ -35,6 +35,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <MotionConfig reducedMotion="user">
+            <div className="bg-ambient" aria-hidden />
             <Navigation />
             <main className="min-h-screen bg-background">
               <PageTransition>{children}</PageTransition>
