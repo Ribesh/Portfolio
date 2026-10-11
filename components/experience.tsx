@@ -1,79 +1,86 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Calendar, MapPin } from "lucide-react"
+const RELEASES = [
+  {
+    title: "Senior DevOps Engineer",
+    company: "Sterling Wells Nepal",
+    period: "Apr 2026 — present",
+    status: "current",
+    points: [
+      "Run the platform for 60+ microservices across several client products, on self-managed Kubernetes clusters built on Azure VMs.",
+      "Own the Jenkins pipelines these services ship through, from build and test to deployment on the clusters.",
+      "Led the technical work that got two products, Rentalbux and Figsflow, through Cyber Essentials certification.",
+    ],
+    stack: ["Kubernetes", "Azure", "Jenkins"],
+  },
+  {
+    title: "Senior DevOps & System Engineer",
+    company: "CAS Trading House",
+    period: "Aug 2021 — Oct 2025",
+    status: "past",
+    points: [
+      "Started the company's DevOps practice and moved teams onto a central GitLab setup.",
+      "Built CI/CD pipelines in GitLab CI and Jenkins with SonarQube checks on every run, and containerized a monolith into independently scaling services.",
+      "Set up an on-prem Kubernetes cluster with kubeadm, replaced manual ops with Ansible, and provisioned infrastructure with Terraform and Vagrant.",
+      "Ran Zabbix monitoring for servers and applications with alerts routed to the owning team.",
+    ],
+    stack: ["GitLab CI", "Jenkins", "Docker", "Kubernetes", "Ansible", "Terraform", "Zabbix"],
+  },
+  {
+    title: "System Engineer",
+    company: "CAS Trading House",
+    period: "Aug 2019 — Aug 2021",
+    status: "past",
+    points: [
+      "Supported the Symantec IGA (Broadcom) deployment at Ncell Pvt. Ltd., handling identity lifecycle management and access governance.",
+    ],
+    stack: ["Symantec IGA", "Access Governance"],
+  },
+]
 
 export function Experience() {
-  const experiences = [
-    {
-      title: "Senior & DevOps System Engineer",
-      company: "CAS Total Solutions",
-      location: "New Plaza, Kathmandu",
-      period: "2019 - 2025",
-      description:
-        " Implemented a centralized code repository using GitLab to standardize code management and improve collaboration across development teams.",
-      technologies: ["Docker", "Kubernetes", "ArgoCD", "Jenkins CI/CD", "Gitlab CI/CD"],
-    },
-    {
-      title: "AWS Cloud Apprenticeship",
-      company: "Adex International",
-      location: "On-site",
-      period: "2025 - 2025",
-      description:
-        "Certification Preparation for AWS Solutions Architect - Associate (SAA-C03)",
-      technologies: ["VPC","Lambda", "S3", "IAM", "Cloud Formation", "SQS", "SNS", "EC2","Route 53", "CloudFront"],
-    },
-    // {
-    //   title: "Junior Web Developer",
-    //   company: "Digital Agency Pro",
-    //   location: "New York, NY",
-    //   period: "2019 - 2020",
-    //   description:
-    //     "Developed custom WordPress themes and plugins. Maintained client websites and implemented SEO best practices.",
-    //   technologies: ["WordPress", "PHP", "MySQL", "jQuery", "CSS3"],
-    // },
-  ]
-
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">Experience</h2>
-          <p className="text-lg text-muted-foreground">My professional journey and key accomplishments</p>
-        </div>
+    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 bg-panel/40">
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">experience</h2>
+        <p className="font-mono text-sm text-muted-foreground mb-12">$ git log --author=ribesh --since=2019</p>
 
-        <div className="space-y-8">
-          {experiences.map((exp, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <div>
-                    <CardTitle className="text-xl text-primary">{exp.title}</CardTitle>
-                    <p className="text-lg font-semibold text-accent">{exp.company}</p>
-                  </div>
-                  <div className="flex flex-col sm:items-end gap-2">
-                    <div className="flex items-center text-muted-foreground">
-                      <Calendar className="h-4 w-4 mr-2" />
-                      {exp.period}
-                    </div>
-                    <div className="flex items-center text-muted-foreground">
-                      <MapPin className="h-4 w-4 mr-2" />
-                      {exp.location}
-                    </div>
-                  </div>
+        <div className="relative">
+          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-border" aria-hidden />
+          <div className="space-y-10">
+            {RELEASES.map((role) => (
+              <div key={role.title + role.period} className="relative pl-8">
+                <span
+                  className={`absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-background ${
+                    role.status === "current" ? "bg-status-green" : "bg-border-strong"
+                  }`}
+                  aria-hidden
+                />
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-2">
+                  <h3 className="text-lg font-semibold text-foreground">
+                    {role.title} <span className="text-muted-foreground font-normal">· {role.company}</span>
+                  </h3>
+                  <span className="font-mono text-xs text-muted-foreground shrink-0">{role.period}</span>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed mb-4">{exp.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {exp.technologies.map((tech, techIndex) => (
-                    <Badge key={techIndex} variant="secondary">
+                <ul className="space-y-1.5 mb-3">
+                  {role.points.map((point) => (
+                    <li key={point} className="text-sm text-muted-foreground leading-relaxed pl-4 relative">
+                      <span className="absolute left-0 text-border-strong">—</span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex flex-wrap gap-1.5">
+                  {role.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="font-mono text-xs px-2 py-0.5 rounded-sm bg-panel-strong text-muted-foreground border border-border"
+                    >
                       {tech}
-                    </Badge>
+                    </span>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

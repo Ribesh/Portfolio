@@ -1,90 +1,128 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Github } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
+import {
+  KarpenterDiagram,
+  BankingObservabilityDiagram,
+  AwsThreeTierDiagram,
+  CentralLoggingDiagram,
+  FrappeBooksDiagram,
+} from "@/components/diagrams"
+
+const PROJECTS = [
+  {
+    name: "gitops-delivery",
+    title: "GitOps delivery on Kubernetes",
+    description:
+      "GitLab CI builds and tests the app, pushes the image, then bumps the Helm chart. ArgoCD picks up the change and deploys it — services exposed on bare metal with MetalLB and an ingress controller.",
+    stack: ["GitLab CI", "Docker", "Helm", "ArgoCD", "Kubernetes", "MetalLB"],
+    image: "/GitOps.png",
+    link: "https://medium.com/@ribeshshr/gitops-in-action-ci-cd-workflow-using-gitlab-helm-and-argocd-1b929870ba86",
+  },
+  {
+    name: "devsecops-pipeline",
+    title: "DevSecOps pipeline",
+    description:
+      "Jenkins pipeline that runs Gitleaks for secrets, SonarQube for code quality and Trivy for image vulnerabilities before pushing and deploying to Kubernetes.",
+    stack: ["Jenkins", "Gitleaks", "SonarQube", "Trivy", "Kubernetes"],
+    image: "/Pipeline.png",
+  },
+  {
+    name: "karpenter-eks",
+    title: "Karpenter autoscaling on EKS",
+    description:
+      "Replaced static, pre-sized node groups on an EKS cluster with Karpenter — it watches for pods the scheduler can't place, launches a right-sized EC2 node on demand, and consolidates idle nodes back down automatically.",
+    stack: ["Karpenter", "EKS", "AWS", "EC2", "Kubernetes"],
+    diagram: KarpenterDiagram,
+  },
+  {
+    name: "banking-observability",
+    title: "Monitoring for Newgen & Finacle",
+    description:
+      "Zabbix and Grafana dashboards covering host health, WebSphere frontend services, Finacle backend services and Oracle DB for a banking client.",
+    stack: ["Zabbix", "Grafana", "WebSphere", "Oracle DB"],
+    diagram: BankingObservabilityDiagram,
+  },
+  {
+    name: "aws-three-tier",
+    title: "Three-tier & serverless on AWS",
+    description:
+      "Three-tier architecture in Terraform deployed through GitHub Actions, a serverless image-processing pipeline on S3, Lambda, API Gateway and DynamoDB, and a highly available web tier behind an ALB.",
+    stack: ["Terraform", "GitHub Actions", "Lambda", "DynamoDB", "CloudFront", "ALB"],
+    diagram: AwsThreeTierDiagram,
+  },
+  {
+    name: "central-logging",
+    title: "Central logging with ELK / EFK",
+    description:
+      "ELK stack on Docker and an EFK stack on Kubernetes, giving containerized services a single place to search logs from.",
+    stack: ["Elasticsearch", "Fluentd", "Kibana", "Docker", "Kubernetes"],
+    diagram: CentralLoggingDiagram,
+  },
+  {
+    name: "frappe-books",
+    title: "Frappe Books, customized",
+    description:
+      "Customized the open-source accounting app for my own business — stripped what I didn't need, added department-store style bill printing. Still in daily use.",
+    stack: ["Frappe", "Python"],
+    diagram: FrappeBooksDiagram,
+  },
+]
 
 export function Projects() {
-  const projects = [
-    {
-      title: "GitOps in Action: CI/CD Workflow using GitLab, Helm, and ArgoCD",
-      description:
-        "CI/CD pipeline with GitLab, Docker, Helm, and ArgoCD for automated testing, containerization, and Kubernetes deployment with Nginx ingress and MetalLB.",
-      image: "/GitOps.png",
-      technologies: ["GitLab CI/CD", "Docker", "Helm", "ArgoCD", "Kubernetes", "Nginx", "MetalLB"],
-      liveUrl: "https://medium.com/@ribeshshr/gitops-in-action-ci-cd-workflow-using-gitlab-helm-and-argocd-1b929870ba86",
-      // ArticleLink: "#",
-      // githubUrl: "#",
-    },
-    {
-      title: "Gitlab: Optimizing CI/CD with Automated Docker Image Builds",
-      description:
-        "Optimized CI/CD pipeline by automating Docker image builds from code updates and resolving frequent build errors.",
-      image: "/Pipeline.png",
-      technologies: ["Docker", "CI/CD", "Git", "Gitlab CI"],
-      // liveUrl: "https://medium.com/@ribeshshr/gitops-in-action-ci-cd-workflow-using-gitlab-helm-and-argocd-1b929870ba86",
-      // githubUrl: "#",
-    },
-    {
-      title: "Weather Analytics Dashboard",
-      description:
-        "Data visualization dashboard showing weather patterns and analytics with interactive charts and maps.",
-      image: "/weather-analytics-dashboard.png",
-      technologies: ["Vue.js", "D3.js", "Python", "FastAPI", "Chart.js"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Social Media App",
-      description: "Mobile-first social platform with real-time messaging, photo sharing, and social features.",
-      image: "/social-media-app-interface.png",
-      technologies: ["React Native", "Firebase", "Redux", "Expo", "TypeScript"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-  ]
-
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">Projects</h2>
-          <p className="text-lg text-muted-foreground">Some of my recent work and side projects</p>
-        </div>
+    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-panel/40">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">projects</h2>
+        <p className="font-mono text-sm text-muted-foreground mb-12">$ kubectl get deployments</p>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="aspect-video overflow-hidden">
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
+        <div className="grid md:grid-cols-2 gap-5">
+          {PROJECTS.map((project) => (
+            <div
+              key={project.name}
+              className="rounded-sm border border-border bg-panel overflow-hidden flex flex-col"
+            >
+              <div className="aspect-video overflow-hidden border-b border-border">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : project.diagram ? (
+                  <project.diagram />
+                ) : null}
               </div>
-              <CardHeader>
-                <CardTitle className="text-xl text-primary">{project.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech, techIndex) => (
-                    <Badge key={techIndex} variant="secondary">
+
+              <div className="p-5 flex flex-col flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-status-green shrink-0" />
+                  <h3 className="text-base font-semibold text-foreground">{project.title}</h3>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {project.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="font-mono text-xs px-2 py-0.5 rounded-sm bg-panel-strong text-muted-foreground border border-border"
+                    >
                       {tech}
-                    </Badge>
+                    </span>
                   ))}
                 </div>
-                <div className="flex gap-4">
-                  <Button size="sm" className="bg-accent hover:bg-accent/90">
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Live Demo
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    <Github className="mr-2 h-4 w-4" />
-                    Code
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 text-sm text-accent hover:underline mt-auto"
+                  >
+                    Read the write-up
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                )}
+              </div>
+            </div>
           ))}
         </div>
       </div>

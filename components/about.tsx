@@ -1,70 +1,55 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Code, Palette, Zap } from "lucide-react"
+const FACTS = [
+  {
+    value: "60+",
+    label: "microservices",
+    detail: "Running on self-managed Kubernetes clusters on Azure VMs, shipped through Jenkins.",
+  },
+  {
+    value: "2.5m → sec",
+    label: "build time cut",
+    detail: "Switched to multi-stage Dockerfiles, shrinking images and pipeline time.",
+  },
+  {
+    value: "2",
+    label: "products certified",
+    detail: "Led the technical work behind Rentalbux and Figsflow passing Cyber Essentials.",
+  },
+]
 
 export function About() {
-  const highlights = [
-    {
-      icon: Code,
-      title: "Automation & CI/CD",
-      description: "Designing automated pipelines and workflows to streamline deployments and reduce errors.",
-    },
-    {
-      icon: Palette,
-      title: "Reliable Infrastructure",
-      description: "Building scalable, maintainable, and fault-tolerant systems that stand the test of time.",
-    },
-    {
-      icon: Zap,
-      title: "Performance & Scalability",
-      description: "Optimizing systems for high availability, efficiency, and seamless cross-environment operation.",
-    },
-  ]
-
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">About Me</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I'm a passionate DevOps & Cloud Engineer with over 3 years of experience. I'm passionate about 
-            solving complex problems, automating infrastracture, and improving system reliability to accelerate
-            delivery in on-prem or cloud-native environments.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-[1.3fr_1fr] gap-12 items-start mb-16">
           <div>
-            <h3 className="text-2xl font-bold text-primary mb-6">My Journey</h3>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">about</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Started as a curious Computer Engineering student, I quickly fell in love with solving problems 
-              through technology. What began with writing simple scripts has grown into building reliable 
-              CI/CD pipelines, automating deployments, and managing scalable cloud-native systems that 
-              empower teams and serve thousands of users.
+              I set up the first CI/CD and container workflow at my previous company, moving a
+              monolith onto Docker and splitting it into services that deploy and scale on their
+              own. These days I run Kubernetes and Jenkins pipelines for 60+ microservices on
+              Azure, and I'm AWS Certified (Solutions Architect – Associate).
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Today, I specialize in DevOps practices, cloud infrastructure, CI/CD pipelines, containerization 
-              with Docker and Kubernetes, and automation tools, always staying current with industry trends 
-              and best practices.
+              Most of my time goes into automating the boring parts of ops — the kind of work
+              that's only noticed when it breaks — so releases stay quick and nobody has to
+              babysit them. On-prem Kubernetes with kubeadm, Terraform and Ansible for
+              provisioning, Zabbix and Grafana for keeping an eye on everything.
             </p>
           </div>
-          <div className="relative">
-            <img
-              src="Ribesh.jpg"
-              alt="Developer portrait"
-              className="rounded-lg shadow-lg w-full max-w-md mx-auto"
-            />
-          </div>
+          <img
+            src="/Ribesh.jpg"
+            alt="Ribesh Shrestha"
+            className="rounded-sm border border-border w-full max-w-xs mx-auto md:mx-0 md:ml-auto"
+          />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {highlights.map((highlight, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6 text-center">
-                <highlight.icon className="h-12 w-12 text-accent mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-primary mb-2">{highlight.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{highlight.description}</p>
-              </CardContent>
-            </Card>
+        <div className="grid sm:grid-cols-3 gap-px bg-border rounded-sm overflow-hidden border border-border">
+          {FACTS.map((fact) => (
+            <div key={fact.label} className="bg-panel p-6">
+              <div className="font-mono text-2xl text-accent mb-1">{fact.value}</div>
+              <div className="text-sm font-medium text-foreground mb-2">{fact.label}</div>
+              <p className="text-sm text-muted-foreground leading-relaxed">{fact.detail}</p>
+            </div>
           ))}
         </div>
       </div>

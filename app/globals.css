@@ -4,75 +4,69 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color tokens to match design brief with modern developer theme */
-  --background: oklch(1 0 0); /* #ffffff */
-  --foreground: oklch(0.205 0 0); /* #1f2937 */
-  --card: oklch(0.985 0 0); /* #f8fafc */
-  --card-foreground: oklch(0.269 0 0); /* #374151 */
-  --popover: oklch(1 0 0); /* #ffffff */
-  --popover-foreground: oklch(0.205 0 0); /* #1f2937 */
-  --primary: oklch(0.269 0 0); /* #374151 */
-  --primary-foreground: oklch(1 0 0); /* #ffffff */
-  --secondary: oklch(0.488 0.243 264.376); /* #6366f1 */
-  --secondary-foreground: oklch(1 0 0); /* #ffffff */
-  --muted: oklch(0.985 0 0); /* #f8fafc */
-  --muted-foreground: oklch(0.439 0 0); /* #4b5563 */
-  --accent: oklch(0.488 0.243 264.376); /* #6366f1 */
-  --accent-foreground: oklch(1 0 0); /* #ffffff */
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.922 0 0); /* #e5e7eb */
-  --input: oklch(0.985 0 0); /* #f8fafc */
-  --ring: oklch(0.488 0.243 264.376 / 0.5); /* rgba(99, 102, 241, 0.5) */
-  --chart-1: oklch(0.488 0.243 264.376); /* #6366f1 */
-  --chart-2: oklch(0.439 0 0); /* #4b5563 */
-  --chart-3: oklch(0.696 0.17 162.48);
-  --chart-4: oklch(0.577 0.245 27.325);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.5rem;
-  --sidebar: oklch(0.985 0 0); /* #f8fafc */
-  --sidebar-foreground: oklch(0.205 0 0); /* #1f2937 */
-  --sidebar-primary: oklch(1 0 0); /* #ffffff */
-  --sidebar-primary-foreground: oklch(0.269 0 0); /* #374151 */
-  --sidebar-accent: oklch(0.488 0.243 264.376); /* #6366f1 */
-  --sidebar-accent-foreground: oklch(1 0 0); /* #ffffff */
-  --sidebar-border: oklch(0.922 0 0); /* #e5e7eb */
-  --sidebar-ring: oklch(0.488 0.243 264.376 / 0.5);
+  /* Light dashboard palette — same monitoring-console system, day shift.
+     Panels go white-on-slate instead of slate-on-black; accents darken
+     so they still pass contrast on a light ground. */
+  --background: #f3f5f9;
+  --panel: #ffffff;
+  --panel-strong: #e9edf4;
+  --foreground: #121722;
+  --muted-foreground: #5a6276;
+  --border: #dde2ea;
+  --border-strong: #c5ccd9;
+
+  --accent: #0b8a76; /* teal — interactive / primary signal */
+  --accent-foreground: #ffffff;
+  --amber: #966007; /* secondary — in-progress / highlight */
+  --status-green: #167c42; /* healthy / operational */
+  --status-red: #c13b35; /* error — used sparingly */
+
+  --primary: var(--accent);
+  --primary-foreground: var(--accent-foreground);
+  --secondary: var(--panel-strong);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--panel);
+  --card: var(--panel);
+  --card-foreground: var(--foreground);
+  --popover: var(--panel-strong);
+  --popover-foreground: var(--foreground);
+  --destructive: var(--status-red);
+  --destructive-foreground: #fff6f5;
+  --input: var(--panel-strong);
+  --ring: color-mix(in oklch, var(--accent) 50%, transparent);
+  --radius: 0.3rem;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.488 0.243 264.376);
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.488 0.243 264.376);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.488 0.243 264.376 / 0.5);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  /* Dark-native dashboard palette — this site's primary theme, the one its
+     subject actually works in: a monitoring console, not a marketing page. */
+  --background: #080b11; /* deep blue-slate, not tinted black */
+  --panel: #0e131c;
+  --panel-strong: #141b27;
+  --foreground: #e6ecf5;
+  --muted-foreground: #7c899d;
+  --border: #1f2838;
+  --border-strong: #2b3650;
+
+  --accent: #4dd9c4; /* cyan — interactive / primary signal */
+  --accent-foreground: #061512;
+  --amber: #e8a855; /* secondary — in-progress / highlight */
+  --status-green: #52d67a; /* healthy / operational */
+  --status-red: #ef6a6a; /* error — used sparingly */
+
+  --primary: var(--accent);
+  --primary-foreground: var(--accent-foreground);
+  --secondary: var(--panel-strong);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--panel);
+  --card: var(--panel);
+  --card-foreground: var(--foreground);
+  --popover: var(--panel-strong);
+  --popover-foreground: var(--foreground);
+  --destructive: var(--status-red);
+  --destructive-foreground: #1a0a0a;
+  --input: var(--panel-strong);
+  --ring: color-mix(in oklch, var(--accent) 50%, transparent);
 }
 
 @theme inline {
@@ -93,35 +87,70 @@
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  /* Added font family variables for Work Sans and Open Sans */
-  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --color-panel: var(--panel);
+  --color-panel-strong: var(--panel-strong);
+  --color-amber: var(--amber);
+  --color-status-green: var(--status-green);
+  --color-status-red: var(--status-red);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   }
   body {
     @apply bg-background text-foreground font-sans;
+    background-image:
+      linear-gradient(to right, color-mix(in oklch, var(--foreground) 4%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 4%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
+  ::selection {
+    background: color-mix(in oklch, var(--accent) 35%, transparent);
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes status-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklch, var(--status-green) 55%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 6px color-mix(in oklch, var(--status-green) 0%, transparent);
+  }
+}
+
+.animate-caret-blink {
+  animation: caret-blink 1s step-end infinite;
+}
+
+.animate-status-pulse {
+  animation: status-pulse 2s ease-out infinite;
 }
