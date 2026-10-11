@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { Menu, X } from "lucide-react"
 import { NAV_ITEMS, PROFILE } from "@/lib/data"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 function useUptime(since: string) {
   const [label, setLabel] = useState("")
@@ -80,21 +81,27 @@ export function Navigation() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-2 font-mono text-xs text-muted-foreground shrink-0">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-status-green animate-status-pulse" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-status-green" />
-            </span>
-            operational · up {uptime}
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground shrink-0">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-status-green animate-status-pulse" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-status-green" />
+              </span>
+              operational · up {uptime}
+            </div>
+            <ThemeToggle />
           </div>
 
-          <button
-            className="md:hidden text-foreground p-2"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle navigation"
-          >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <div className="flex items-center gap-1 md:hidden">
+            <ThemeToggle />
+            <button
+              className="text-foreground p-2"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle navigation"
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
         {isOpen && (

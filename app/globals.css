@@ -4,7 +4,41 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Dark-native dashboard palette — this site has one theme, the one its
+  /* Light dashboard palette — same monitoring-console system, day shift.
+     Panels go white-on-slate instead of slate-on-black; accents darken
+     so they still pass contrast on a light ground. */
+  --background: #f3f5f9;
+  --panel: #ffffff;
+  --panel-strong: #e9edf4;
+  --foreground: #121722;
+  --muted-foreground: #5a6276;
+  --border: #dde2ea;
+  --border-strong: #c5ccd9;
+
+  --accent: #0b8a76; /* teal — interactive / primary signal */
+  --accent-foreground: #ffffff;
+  --amber: #966007; /* secondary — in-progress / highlight */
+  --status-green: #167c42; /* healthy / operational */
+  --status-red: #c13b35; /* error — used sparingly */
+
+  --primary: var(--accent);
+  --primary-foreground: var(--accent-foreground);
+  --secondary: var(--panel-strong);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--panel);
+  --card: var(--panel);
+  --card-foreground: var(--foreground);
+  --popover: var(--panel-strong);
+  --popover-foreground: var(--foreground);
+  --destructive: var(--status-red);
+  --destructive-foreground: #fff6f5;
+  --input: var(--panel-strong);
+  --ring: color-mix(in oklch, var(--accent) 50%, transparent);
+  --radius: 0.3rem;
+}
+
+.dark {
+  /* Dark-native dashboard palette — this site's primary theme, the one its
      subject actually works in: a monitoring console, not a marketing page. */
   --background: #080b11; /* deep blue-slate, not tinted black */
   --panel: #0e131c;
@@ -33,7 +67,6 @@
   --destructive-foreground: #1a0a0a;
   --input: var(--panel-strong);
   --ring: color-mix(in oklch, var(--accent) 50%, transparent);
-  --radius: 0.3rem;
 }
 
 @theme inline {
@@ -73,6 +106,7 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   }
   body {
     @apply bg-background text-foreground font-sans;
