@@ -1,23 +1,24 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Work_Sans, Open_Sans } from "next/font/google"
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 
-const workSans = Work_Sans({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-work-sans",
+  variable: "--font-space-grotesk",
 })
 
-const openSans = Open_Sans({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-open-sans",
+  variable: "--font-jetbrains-mono",
 })
 
 export const metadata: Metadata = {
-  title: "Ribesh's Portfolio",
-  description: "Modern DevOps portfolio with interactive terminal",
+  title: "Ribesh Shrestha — Senior DevOps Engineer",
+  description:
+    "Portfolio of Ribesh Shrestha, a Senior DevOps Engineer running Kubernetes, CI/CD and cloud infrastructure for 60+ microservices.",
   generator: "v0.app",
 }
 
@@ -27,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${workSans.variable} ${openSans.variable} antialiased`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}>
       <body>{children}</body>
     </html>
   )
