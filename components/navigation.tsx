@@ -1,9 +1,13 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { motion } from "motion/react"
 import { Menu, X } from "lucide-react"
 import { NAV_ITEMS, PROFILE } from "@/lib/data"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { SPRING_SNAPPY } from "@/lib/motion"
 
 function useUptime(since: string) {
   const [label, setLabel] = useState("")
@@ -27,67 +31,52 @@ function useUptime(since: string) {
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState("home")
+  const pathname = usePathname()
   const uptime = useUptime(PROFILE.careerStart)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = NAV_ITEMS.map((item) => document.getElementById(item.id))
-      const scrollPosition = window.scrollY + 120
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i]
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(NAV_ITEMS[i].id)
-          break
-        }
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
-    setIsOpen(false)
-  }
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-14 items-center justify-between gap-4">
-          <button
-            onClick={() => scrollToSection("home")}
-            className="font-mono text-sm text-foreground shrink-0"
+    <nav className="fixed top-4 left-0 right-0 z-50 px-4">
+      <div className="max-w-3xl mx-auto material-strong rounded-full border border-border shadow-lg shadow-black/5">
+        <div className="flex h-12 items-center justify-between gap-2 px-2">
+          <Link
+            href="/"
+            className="font-mono text-xs text-foreground shrink-0 px-3 py-1.5 rounded-full hover:bg-panel-strong/60 transition-colors"
           >
             <span className="text-accent">{PROFILE.handle}</span>
-            <span className="text-muted-foreground">@shrestha:~$</span>
-          </button>
+            <span className="text-muted-foreground">@shrestha</span>
+          </Link>
 
-          <div className="hidden md:flex items-center gap-1 font-mono text-sm">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`px-3 py-1.5 rounded-sm transition-colors ${
-                  activeSection === item.id
-                    ? "text-accent bg-panel-strong"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                /{item.label}
-              </button>
-            ))}
+          <div className="hidden md:flex items-center gap-0.5 text-sm">
+            {NAV_ITEMS.map((item) => {
+              const active = pathname === item.href
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`relative px-3.5 py-1.5 rounded-full transition-colors ${
+                    active ? "text-accent-foreground" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {active && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 rounded-full bg-accent"
+                      transition={SPRING_SNAPPY}
+                    />
+                  )}
+                  <span className="relative z-10">{item.label}</span>
+                </Link>
+              )
+            })}
           </div>
 
-          <div className="hidden md:flex items-center gap-4">
-            <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground shrink-0">
-              <span className="relative flex h-2 w-2">
+          <div className="hidden md:flex items-center gap-3 pr-1">
+            <div className="flex items-center gap-1.5 font-mono text-[11px] text-muted-foreground shrink-0">
+              <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-status-green animate-status-pulse" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-status-green" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-status-green" />
               </span>
-              operational · up {uptime}
+              up {uptime}
             </div>
             <ThemeToggle />
           </div>
@@ -103,29 +92,38 @@ export function Navigation() {
             </button>
           </div>
         </div>
+      </div>
 
-        {isOpen && (
-          <div className="md:hidden pb-4 border-t border-border">
-            <div className="flex flex-col pt-2 font-mono text-sm">
-              {NAV_ITEMS.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`text-left px-2 py-2.5 ${
-                    activeSection === item.id ? "text-accent" : "text-muted-foreground"
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97, y: -8 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={SPRING_SNAPPY}
+          className="md:hidden max-w-3xl mx-auto mt-2 material-strong rounded-3xl border border-border shadow-lg shadow-black/5 overflow-hidden"
+        >
+          <div className="flex flex-col p-2 text-sm">
+            {NAV_ITEMS.map((item) => {
+              const active = pathname === item.href
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`text-left px-4 py-2.5 rounded-xl ${
+                    active ? "text-accent-foreground bg-accent" : "text-muted-foreground"
                   }`}
                 >
-                  /{item.label}
-                </button>
-              ))}
-              <div className="flex items-center gap-2 px-2 pt-2 text-xs text-muted-foreground">
-                <span className="h-2 w-2 rounded-full bg-status-green" />
-                operational · up {uptime}
-              </div>
+                  {item.label}
+                </Link>
+              )
+            })}
+            <div className="flex items-center gap-2 px-4 py-2 text-xs text-muted-foreground">
+              <span className="h-1.5 w-1.5 rounded-full bg-status-green" />
+              operational · up {uptime}
             </div>
           </div>
-        )}
-      </div>
+        </motion.div>
+      )}
     </nav>
   )
 }

@@ -1,3 +1,6 @@
+"use client"
+
+import { motion } from "motion/react"
 import { ArrowUpRight } from "lucide-react"
 import {
   KarpenterDiagram,
@@ -6,6 +9,7 @@ import {
   CentralLoggingDiagram,
   FrappeBooksDiagram,
 } from "@/components/diagrams"
+import { fadeUp, stagger, viewport, SPRING } from "@/lib/motion"
 
 const PROJECTS = [
   {
@@ -69,22 +73,35 @@ const PROJECTS = [
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-panel/40">
+    <section id="projects" className="py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">projects</h2>
-        <p className="font-mono text-sm text-muted-foreground mb-12">$ kubectl get deployments</p>
+        <motion.div initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp}>
+          <h2 className="text-headline text-3xl sm:text-4xl text-foreground mb-2">Projects</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-12">$ kubectl get deployments</p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={stagger(0.08)}
+          className="grid md:grid-cols-2 gap-5"
+        >
           {PROJECTS.map((project) => (
-            <div
+            <motion.div
               key={project.name}
-              className="rounded-sm border border-border bg-panel overflow-hidden flex flex-col"
+              variants={fadeUp}
+              whileHover={{ y: -6 }}
+              transition={SPRING}
+              className="group rounded-2xl border border-border material overflow-hidden flex flex-col shadow-sm"
             >
               <div className="aspect-video overflow-hidden border-b border-border">
                 {project.image ? (
-                  <img
+                  <motion.img
                     src={project.image}
                     alt={project.title}
+                    whileHover={{ scale: 1.05 }}
+                    transition={SPRING}
                     className="w-full h-full object-cover"
                   />
                 ) : project.diagram ? (
@@ -92,7 +109,7 @@ export function Projects() {
                 ) : null}
               </div>
 
-              <div className="p-5 flex flex-col flex-1">
+              <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-status-green shrink-0" />
                   <h3 className="text-base font-semibold text-foreground">{project.title}</h3>
@@ -104,7 +121,7 @@ export function Projects() {
                   {project.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="font-mono text-xs px-2 py-0.5 rounded-sm bg-panel-strong text-muted-foreground border border-border"
+                      className="font-mono text-xs px-2.5 py-1 rounded-full bg-panel-strong text-muted-foreground border border-border"
                     >
                       {tech}
                     </span>
@@ -122,9 +139,9 @@ export function Projects() {
                   </a>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

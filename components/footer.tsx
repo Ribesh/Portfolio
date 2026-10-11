@@ -3,7 +3,7 @@ import { PROFILE } from "@/lib/data"
 
 export function Footer() {
   return (
-    <footer className="border-t border-border px-4 sm:px-6 lg:px-8 py-10">
+    <footer className="px-4 sm:px-6 lg:px-8 py-10">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="font-mono text-xs text-muted-foreground">
           {PROFILE.domain} · built with Next.js, shipped by GitHub Actions

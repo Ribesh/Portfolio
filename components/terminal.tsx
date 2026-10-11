@@ -3,8 +3,10 @@
 import type React from "react"
 
 import { useState, useEffect, useRef } from "react"
+import { motion } from "motion/react"
 import { TerminalIcon, Minimize2, Maximize2 } from "lucide-react"
 import { PROFILE } from "@/lib/data"
+import { fadeUp, viewport, SPRING_SNAPPY } from "@/lib/motion"
 
 const COMMANDS: Record<string, string> = {
   help: "available commands: about, experience, stack, projects, certifications, contact, resume, uptime, whoami, sudo, clear",
@@ -81,24 +83,33 @@ export function Terminal() {
   }
 
   return (
-    <section id="terminal" className="py-24 px-4 sm:px-6 lg:px-8">
+    <section id="terminal" className="py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">shell</h2>
-        <p className="font-mono text-sm text-muted-foreground mb-12">a real prompt, try it</p>
+        <motion.div initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp}>
+          <h2 className="text-headline text-3xl sm:text-4xl text-foreground mb-2">Shell</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-12">a real prompt, try it</p>
+        </motion.div>
 
-        <div className="rounded-sm border border-border bg-panel overflow-hidden font-mono text-sm">
-          <div className="flex items-center justify-between px-4 py-2.5 border-b border-border bg-panel-strong">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={viewport}
+          className="rounded-2xl border border-border material-strong overflow-hidden font-mono text-sm shadow-xl shadow-black/10"
+        >
+          <div className="flex items-center justify-between px-4 py-3 border-b border-border">
             <div className="flex items-center gap-2 text-muted-foreground">
               <TerminalIcon className="h-3.5 w-3.5" />
               {PROFILE.handle}@portfolio:~
             </div>
-            <button
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              transition={SPRING_SNAPPY}
               className="text-muted-foreground hover:text-foreground p-1"
               onClick={() => setIsMinimized(!isMinimized)}
               aria-label={isMinimized ? "Expand terminal" : "Minimize terminal"}
             >
               {isMinimized ? <Maximize2 className="h-3.5 w-3.5" /> : <Minimize2 className="h-3.5 w-3.5" />}
-            </button>
+            </motion.button>
           </div>
 
           {!isMinimized && (
@@ -135,7 +146,7 @@ export function Terminal() {
               </form>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -1,14 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google"
+import { JetBrains_Mono } from "next/font/google"
+import { MotionConfig } from "motion/react"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Navigation } from "@/components/navigation"
+import { Footer } from "@/components/footer"
+import { PageTransition } from "@/components/page-transition"
 import "./globals.css"
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-space-grotesk",
-})
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -31,12 +29,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
+      className={`${jetbrainsMono.variable} antialiased`}
       suppressHydrationWarning
     >
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          {children}
+          <MotionConfig reducedMotion="user">
+            <Navigation />
+            <main className="min-h-screen bg-background">
+              <PageTransition>{children}</PageTransition>
+            </main>
+            <Footer />
+          </MotionConfig>
         </ThemeProvider>
       </body>
     </html>
