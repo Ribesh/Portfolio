@@ -1,8 +1,8 @@
 import { Cloud, Boxes, GitBranch, FileCode2, ShieldCheck, Activity, Code2, Server } from "lucide-react"
 
 const STACK = [
-  { title: "cloud", icon: Cloud, tools: ["Azure", "AWS EC2", "AWS S3", "AWS VPC", "Lambda", "RDS", "IAM", "CloudWatch"] },
-  { title: "containers & orchestration", icon: Boxes, tools: ["Kubernetes", "Ingress", "MetalLB", "StatefulSets", "Helm", "Docker", "Docker Compose"] },
+  { title: "cloud", icon: Cloud, tools: ["Azure", "AWS EC2", "AWS EKS", "AWS S3", "AWS VPC", "Lambda", "RDS", "IAM", "CloudWatch"] },
+  { title: "containers & orchestration", icon: Boxes, tools: ["Kubernetes", "Karpenter", "Ingress", "MetalLB", "StatefulSets", "Helm", "Docker", "Docker Compose"] },
   { title: "ci/cd & gitops", icon: GitBranch, tools: ["GitLab CI", "Jenkins", "GitHub Actions", "ArgoCD"] },
   { title: "iac & config", icon: FileCode2, tools: ["Terraform", "Ansible", "CloudFormation", "Vagrant"] },
   { title: "security & quality", icon: ShieldCheck, tools: ["SonarQube", "Trivy", "Gitleaks"] },
