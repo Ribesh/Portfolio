@@ -1,3 +1,8 @@
+"use client"
+
+import { motion } from "motion/react"
+import { fadeUp, stagger, viewport } from "@/lib/motion"
+
 const RELEASES = [
   {
     title: "Senior DevOps Engineer",
@@ -38,16 +43,26 @@ const RELEASES = [
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 bg-panel/40">
+    <section id="experience" className="py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">experience</h2>
-        <p className="font-mono text-sm text-muted-foreground mb-12">$ git log --author=ribesh --since=2019</p>
+        <motion.div initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp}>
+          <h2 className="text-headline text-3xl sm:text-4xl text-foreground mb-2">Experience</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-12">
+            $ git log --author=ribesh --since=2019
+          </p>
+        </motion.div>
 
-        <div className="relative">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={stagger(0.15)}
+          className="relative"
+        >
           <div className="absolute left-[7px] top-2 bottom-2 w-px bg-border" aria-hidden />
           <div className="space-y-10">
             {RELEASES.map((role) => (
-              <div key={role.title + role.period} className="relative pl-8">
+              <motion.div key={role.title + role.period} variants={fadeUp} className="relative pl-8">
                 <span
                   className={`absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-background ${
                     role.status === "current" ? "bg-status-green" : "bg-border-strong"
@@ -55,7 +70,7 @@ export function Experience() {
                   aria-hidden
                 />
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-2">
-                  <h3 className="text-lg font-semibold text-foreground">
+                  <h3 className="text-lg text-foreground">
                     {role.title} <span className="text-muted-foreground font-normal">· {role.company}</span>
                   </h3>
                   <span className="font-mono text-xs text-muted-foreground shrink-0">{role.period}</span>
@@ -72,16 +87,16 @@ export function Experience() {
                   {role.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="font-mono text-xs px-2 py-0.5 rounded-sm bg-panel-strong text-muted-foreground border border-border"
+                      className="font-mono text-xs px-2.5 py-1 rounded-full bg-panel-strong text-muted-foreground border border-border"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

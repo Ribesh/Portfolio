@@ -1,3 +1,9 @@
+"use client"
+
+import { motion } from "motion/react"
+import { ClusterVisual } from "@/components/cluster-visual"
+import { fadeUp, stagger, viewport, SPRING } from "@/lib/motion"
+
 const FACTS = [
   {
     value: "60+",
@@ -18,11 +24,17 @@ const FACTS = [
 
 export function About() {
   return (
-    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-[1.3fr_1fr] gap-12 items-start mb-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={fadeUp}
+          className="grid md:grid-cols-[1.3fr_1fr] gap-12 items-start mb-16"
+        >
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">about</h2>
+            <h2 className="text-headline text-3xl sm:text-4xl text-foreground mb-6">About</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               I set up the first CI/CD and container workflow at my previous company, moving a
               monolith onto Docker and splitting it into services that deploy and scale on their
@@ -36,22 +48,30 @@ export function About() {
               provisioning, Zabbix and Grafana for keeping an eye on everything.
             </p>
           </div>
-          <img
-            src="/Ribesh.jpg"
-            alt="Ribesh Shrestha"
-            className="rounded-sm border border-border w-full max-w-xs mx-auto md:mx-0 md:ml-auto"
-          />
-        </div>
+          <ClusterVisual />
+        </motion.div>
 
-        <div className="grid sm:grid-cols-3 gap-px bg-border rounded-sm overflow-hidden border border-border">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={stagger()}
+          className="grid sm:grid-cols-3 gap-4"
+        >
           {FACTS.map((fact) => (
-            <div key={fact.label} className="bg-panel p-6">
+            <motion.div
+              key={fact.label}
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              transition={SPRING}
+              className="material rounded-2xl border border-border p-6 shadow-sm"
+            >
               <div className="font-mono text-2xl text-accent mb-1">{fact.value}</div>
               <div className="text-sm font-medium text-foreground mb-2">{fact.label}</div>
               <p className="text-sm text-muted-foreground leading-relaxed">{fact.detail}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

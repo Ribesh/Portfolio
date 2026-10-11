@@ -13,11 +13,11 @@ export const PROFILE = {
 }
 
 export const NAV_ITEMS = [
-  { id: "home", label: "home" },
-  { id: "about", label: "about" },
-  { id: "experience", label: "experience" },
-  { id: "skills", label: "stack" },
-  { id: "projects", label: "projects" },
-  { id: "certifications", label: "certs" },
-  { id: "terminal", label: "shell" },
+  { href: "/", label: "home" },
+  { href: "/about", label: "about" },
+  { href: "/experience", label: "experience" },
+  { href: "/stack", label: "stack" },
+  { href: "/projects", label: "projects" },
+  { href: "/certifications", label: "certs" },
+  { href: "/shell", label: "shell" },
 ]

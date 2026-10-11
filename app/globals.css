@@ -4,22 +4,22 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Light dashboard palette — same monitoring-console system, day shift.
-     Panels go white-on-slate instead of slate-on-black; accents darken
-     so they still pass contrast on a light ground. */
-  --background: #f3f5f9;
+  /* Light — crisp, airy, paper-white panels on a soft graphite ground. */
+  --background: #f5f5f7;
   --panel: #ffffff;
-  --panel-strong: #e9edf4;
-  --foreground: #121722;
-  --muted-foreground: #5a6276;
-  --border: #dde2ea;
-  --border-strong: #c5ccd9;
+  --panel-strong: #ffffff;
+  --glass: color-mix(in oklch, white 78%, transparent);
+  --glass-strong: color-mix(in oklch, white 90%, transparent);
+  --foreground: #1d1d1f;
+  --muted-foreground: #4b4b50;
+  --border: color-mix(in oklch, #1d1d1f 14%, transparent);
+  --border-strong: color-mix(in oklch, #1d1d1f 28%, transparent);
 
-  --accent: #0b8a76; /* teal — interactive / primary signal */
+  --accent: #0a8a7c;
   --accent-foreground: #ffffff;
-  --amber: #966007; /* secondary — in-progress / highlight */
-  --status-green: #167c42; /* healthy / operational */
-  --status-red: #c13b35; /* error — used sparingly */
+  --amber: #a5680b;
+  --status-green: #1a8a4a;
+  --status-red: #d13b2e;
 
   --primary: var(--accent);
   --primary-foreground: var(--accent-foreground);
@@ -34,25 +34,27 @@
   --destructive-foreground: #fff6f5;
   --input: var(--panel-strong);
   --ring: color-mix(in oklch, var(--accent) 50%, transparent);
-  --radius: 0.3rem;
+  --radius: 1rem;
+  --shadow-color: 220 20% 40%;
 }
 
 .dark {
-  /* Dark-native dashboard palette — this site's primary theme, the one its
-     subject actually works in: a monitoring console, not a marketing page. */
-  --background: #080b11; /* deep blue-slate, not tinted black */
-  --panel: #0e131c;
-  --panel-strong: #141b27;
-  --foreground: #e6ecf5;
-  --muted-foreground: #7c899d;
-  --border: #1f2838;
-  --border-strong: #2b3650;
+  /* Dark — true near-black, glass surfaces, a soft glow instead of a grid. */
+  --background: #050507;
+  --panel: #0d0d10;
+  --panel-strong: #1a1a1e;
+  --glass: color-mix(in oklch, #1c1c1f 62%, transparent);
+  --glass-strong: color-mix(in oklch, #1c1c1f 82%, transparent);
+  --foreground: #f5f5f7;
+  --muted-foreground: #a8a8ae;
+  --border: color-mix(in oklch, white 16%, transparent);
+  --border-strong: color-mix(in oklch, white 30%, transparent);
 
-  --accent: #4dd9c4; /* cyan — interactive / primary signal */
-  --accent-foreground: #061512;
-  --amber: #e8a855; /* secondary — in-progress / highlight */
-  --status-green: #52d67a; /* healthy / operational */
-  --status-red: #ef6a6a; /* error — used sparingly */
+  --accent: #52e5cf;
+  --amber: #f0b254;
+  --status-green: #52d67a;
+  --status-red: #ff7b72;
+  --accent-foreground: #04120f;
 
   --primary: var(--accent);
   --primary-foreground: var(--accent-foreground);
@@ -67,6 +69,7 @@
   --destructive-foreground: #1a0a0a;
   --input: var(--panel-strong);
   --ring: color-mix(in oklch, var(--accent) 50%, transparent);
+  --shadow-color: 0 0% 0%;
 }
 
 @theme inline {
@@ -92,32 +95,59 @@
   --color-ring: var(--ring);
   --color-panel: var(--panel);
   --color-panel-strong: var(--panel-strong);
+  --color-glass: var(--glass);
+  --color-glass-strong: var(--glass-strong);
   --color-amber: var(--amber);
   --color-status-green: var(--status-green);
   --color-status-red: var(--status-red);
-  --radius-sm: calc(var(--radius) - 2px);
-  --radius-md: var(--radius);
-  --radius-lg: calc(var(--radius) + 4px);
-  --radius-xl: calc(var(--radius) + 8px);
-  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", ui-sans-serif, system-ui, "Segoe UI",
+    Helvetica, Arial, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
   }
   body {
     @apply bg-background text-foreground font-sans;
-    background-image:
-      linear-gradient(to right, color-mix(in oklch, var(--foreground) 4%, transparent) 1px, transparent 1px),
-      linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 4%, transparent) 1px, transparent 1px);
-    background-size: 48px 48px;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
   ::selection {
     background: color-mix(in oklch, var(--accent) 35%, transparent);
     color: var(--foreground);
+  }
+
+  /* Optical sizing: tighten tracking/leading as type gets large, per §15. */
+  h1, .text-display {
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    font-weight: 600;
+  }
+  h2, .text-headline {
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    font-weight: 600;
+  }
+  h3 {
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  p, li {
+    letter-spacing: 0;
   }
 }
 
@@ -125,26 +155,36 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Translucent material — nav bars, sheets, cards that float over content. */
+  .material {
+    background: var(--glass);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  .material-strong {
+    background: var(--glass-strong);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+  }
+
+  .glow {
+    background: radial-gradient(
+      60% 50% at 50% 0%,
+      color-mix(in oklch, var(--accent) 16%, transparent),
+      transparent 70%
+    );
+  }
 }
 
 @keyframes caret-blink {
-  0%,
-  49% {
-    opacity: 1;
-  }
-  50%,
-  100% {
-    opacity: 0;
-  }
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
 }
 
 @keyframes status-pulse {
-  0% {
-    box-shadow: 0 0 0 0 color-mix(in oklch, var(--status-green) 55%, transparent);
-  }
-  100% {
-    box-shadow: 0 0 0 6px color-mix(in oklch, var(--status-green) 0%, transparent);
-  }
+  0% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--status-green) 55%, transparent); }
+  100% { box-shadow: 0 0 0 6px color-mix(in oklch, var(--status-green) 0%, transparent); }
 }
 
 .animate-caret-blink {
@@ -153,4 +193,24 @@
 
 .animate-status-pulse {
   animation: status-pulse 2s ease-out infinite;
+}
+
+/* §14 — reduced motion/transparency/contrast get gentler, not silent, equivalents. */
+@media (prefers-reduced-transparency: reduce) {
+  .material, .material-strong {
+    background: var(--panel-strong);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root, .dark {
+    --border: var(--border-strong);
+  }
+  .material, .material-strong {
+    background: var(--panel-strong);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
